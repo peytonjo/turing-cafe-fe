@@ -1,8 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
-import Card from '../Card/Card.js'
+import Users from '../Users/Users.js'
+import { getAllUsers } from '../apiCalls';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      users: []
+    }
+  }
+
+  componentDidMount(){
+    getAllUsers() 
+      .then(data => this.setState({
+        users: data.users
+      }))
+  }
   render() {
     return (
       <div className="App">
@@ -11,7 +25,7 @@ class App extends Component {
 
         </div>
         <div className='resy-container'>
-          <Card /> 
+          <Users /> 
         </div>
       </div>
     )
