@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Card.scss'
+import './Card.css'
 import '../App/App.js'
 
 class Card extends Component {
@@ -8,9 +8,11 @@ class Card extends Component {
   }
 
   render() {
-    const = { id, name, date, time, number} = this.props
+    const { id, name, date, time, number} = this.props
     return (
-      <section className="user-card">
+      <section 
+        className="user-card"
+        userId={id}>
         <h1>{name}</h1>
         <p>{date}</p>
         <p>{time} pm</p>
