@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Users from '../Users/Users.js'
-import { getAllUsers } from '../apiCalls';
+import { getAllRes } from '../apiCalls';
 
 class App extends Component {
   constructor() {
@@ -12,10 +12,12 @@ class App extends Component {
   }
 
   componentDidMount(){
-    getAllUsers() 
-      .then(data => this.setState({
-        users: data.users
-      }))
+    getAllRes() 
+      .then(data => {
+        this.setState({
+          users: data
+        })
+      })
   }
   render() {
     return (
@@ -25,7 +27,9 @@ class App extends Component {
 
         </div>
         <div className='resy-container'>
-          <Users /> 
+          <Users
+            users={ this.state.users }
+            />
         </div>
       </div>
     )
